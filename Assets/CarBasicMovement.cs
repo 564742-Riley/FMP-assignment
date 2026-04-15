@@ -120,9 +120,9 @@ public partial class @CarBasicMovement: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Cameras"",
+                    ""name"": ""CycleCamera"",
                     ""type"": ""Button"",
-                    ""id"": ""516e12d7-56f2-4a80-a33e-817509796041"",
+                    ""id"": ""7c6d7e2b-6790-43ff-ad2a-b276f1c89339"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
@@ -165,12 +165,12 @@ public partial class @CarBasicMovement: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""1b6bd610-be63-45ee-82ab-e022096087db"",
-                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""id"": ""948622c2-4bcd-495b-8ecc-01edfc25c943"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": "";Gamepad"",
-                    ""action"": ""Cameras"",
+                    ""groups"": """",
+                    ""action"": ""CycleCamera"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1224,7 +1224,7 @@ public partial class @CarBasicMovement: IInputActionCollection2, IDisposable
         m_Driving_Steer = m_Driving.FindAction("Steer", throwIfNotFound: true);
         m_Driving_Accelerate = m_Driving.FindAction("Accelerate", throwIfNotFound: true);
         m_Driving_Brake = m_Driving.FindAction("Brake", throwIfNotFound: true);
-        m_Driving_Cameras = m_Driving.FindAction("Cameras", throwIfNotFound: true);
+        m_Driving_CycleCamera = m_Driving.FindAction("CycleCamera", throwIfNotFound: true);
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
@@ -1333,7 +1333,7 @@ public partial class @CarBasicMovement: IInputActionCollection2, IDisposable
     private readonly InputAction m_Driving_Steer;
     private readonly InputAction m_Driving_Accelerate;
     private readonly InputAction m_Driving_Brake;
-    private readonly InputAction m_Driving_Cameras;
+    private readonly InputAction m_Driving_CycleCamera;
     /// <summary>
     /// Provides access to input actions defined in input action map "Driving".
     /// </summary>
@@ -1358,9 +1358,9 @@ public partial class @CarBasicMovement: IInputActionCollection2, IDisposable
         /// </summary>
         public InputAction @Brake => m_Wrapper.m_Driving_Brake;
         /// <summary>
-        /// Provides access to the underlying input action "Driving/Cameras".
+        /// Provides access to the underlying input action "Driving/CycleCamera".
         /// </summary>
-        public InputAction @Cameras => m_Wrapper.m_Driving_Cameras;
+        public InputAction @CycleCamera => m_Wrapper.m_Driving_CycleCamera;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -1396,9 +1396,9 @@ public partial class @CarBasicMovement: IInputActionCollection2, IDisposable
             @Brake.started += instance.OnBrake;
             @Brake.performed += instance.OnBrake;
             @Brake.canceled += instance.OnBrake;
-            @Cameras.started += instance.OnCameras;
-            @Cameras.performed += instance.OnCameras;
-            @Cameras.canceled += instance.OnCameras;
+            @CycleCamera.started += instance.OnCycleCamera;
+            @CycleCamera.performed += instance.OnCycleCamera;
+            @CycleCamera.canceled += instance.OnCycleCamera;
         }
 
         /// <summary>
@@ -1419,9 +1419,9 @@ public partial class @CarBasicMovement: IInputActionCollection2, IDisposable
             @Brake.started -= instance.OnBrake;
             @Brake.performed -= instance.OnBrake;
             @Brake.canceled -= instance.OnBrake;
-            @Cameras.started -= instance.OnCameras;
-            @Cameras.performed -= instance.OnCameras;
-            @Cameras.canceled -= instance.OnCameras;
+            @CycleCamera.started -= instance.OnCycleCamera;
+            @CycleCamera.performed -= instance.OnCycleCamera;
+            @CycleCamera.canceled -= instance.OnCycleCamera;
         }
 
         /// <summary>
@@ -1928,12 +1928,12 @@ public partial class @CarBasicMovement: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnBrake(InputAction.CallbackContext context);
         /// <summary>
-        /// Method invoked when associated input action "Cameras" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// Method invoked when associated input action "CycleCamera" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
         /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnCameras(InputAction.CallbackContext context);
+        void OnCycleCamera(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "Player" which allows adding and removing callbacks.

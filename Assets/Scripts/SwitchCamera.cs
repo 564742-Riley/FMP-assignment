@@ -6,45 +6,37 @@ public class SwitchCamera : MonoBehaviour
     public GameObject camera1;
     public GameObject camera2;
     public GameObject camera3;
-    InputAction cameraAction;
-    
-   
-    
+
+    private InputAction cycleAction;
+
+    private int currentCamera = 0; // 0 = cam1, 1 = cam2, 2 = cam3
+
     void Start()
     {
-        camera1.SetActive(true);
-        camera2.SetActive(false);
-        camera3.SetActive(false);
-        cameraAction = InputSystem.actions.FindAction("Cameras");
+        cycleAction = InputSystem.actions.FindAction("CycleCamera");
+        cycleAction.Enable();
+
+        ActivateCamera(currentCamera);
     }
 
-   
     void Update()
     {
-        if (Input.GetKeyDown("1"))
+        if (cycleAction.triggered)
         {
-            camera1.SetActive(true);
-            camera2.SetActive(false);
-            camera3.SetActive(false);
-            
+            currentCamera++;
+
+            if (currentCamera > 2)
+                currentCamera = 0;
+
+            ActivateCamera(currentCamera);
         }
+    }
 
-        if (Input.GetKeyDown("2"))
-        {
-            camera1.SetActive(false);
-            camera2.SetActive(true);
-            camera3.SetActive(false);
-
-        }
-
-        if (Input.GetKeyDown("3"))
-        {
-            camera1.SetActive(false);
-            camera2.SetActive(false);
-            camera3.SetActive(true);
-
-        }
-
-
+    void ActivateCamera(int index)
+    {
+        camera1.SetActive(index == 0);
+        camera2.SetActive(index == 1);
+        camera3.SetActive(index == 2);
     }
 }
+

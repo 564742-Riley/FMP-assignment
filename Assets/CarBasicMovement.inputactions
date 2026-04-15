@@ -34,9 +34,9 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "Cameras",
+                    "name": "CycleCamera",
                     "type": "Button",
-                    "id": "516e12d7-56f2-4a80-a33e-817509796041",
+                    "id": "7c6d7e2b-6790-43ff-ad2a-b276f1c89339",
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": "",
@@ -79,12 +79,12 @@
                 },
                 {
                     "name": "",
-                    "id": "1b6bd610-be63-45ee-82ab-e022096087db",
-                    "path": "<Gamepad>/dpad/down",
+                    "id": "948622c2-4bcd-495b-8ecc-01edfc25c943",
+                    "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Gamepad",
-                    "action": "Cameras",
+                    "groups": "",
+                    "action": "CycleCamera",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
