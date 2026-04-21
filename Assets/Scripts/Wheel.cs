@@ -13,6 +13,6 @@ public class Wheel : MonoBehaviour
         {
             wheelMesh.localEulerAngles = new Vector3(wheelMesh.localEulerAngles.x, wheelCollider.steerAngle - wheelMesh.localEulerAngles.z, wheelMesh.localEulerAngles.z);
         }
-        wheelMesh.Rotate(wheelCollider.rpm / 60 * 360 * Time.deltaTime, 0, 0);
+        wheelMesh.Rotate(wheelCollider.rpm / 60 * 90 * Time.deltaTime, 0, 0);
     }
 }

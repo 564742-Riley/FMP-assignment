@@ -88,8 +88,8 @@ public class Car: MonoBehaviour
         wheel2.motorTorque = motor;
         wheel3.motorTorque = motor;
         wheel4.motorTorque = motor;
-        wheel1.steerAngle = steerspeed * horizontalInput;
-        wheel2.steerAngle = steerspeed * horizontalInput;
+        wheel1.steerAngle = steerspeed * horizontalInput / 1.5f;
+        wheel2.steerAngle = steerspeed * horizontalInput / 1.5f;
     }
 
 }
