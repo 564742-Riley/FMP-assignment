@@ -11,6 +11,7 @@ public class RaceManager : MonoBehaviour
 
     [Header("UI References")]
     [SerializeField] private TextMeshProUGUI currentLapTimeText;
+    [SerializeField] private TextMeshProUGUI bestLapTimeText;
     [SerializeField] private TextMeshProUGUI overallRaceTimeText;
     [SerializeField] private TextMeshProUGUI lapText;
 
@@ -18,15 +19,18 @@ public class RaceManager : MonoBehaviour
     [SerializeField] private Checkpoint[] checkpoints;
     [SerializeField] private int lastCheckpointIndex = -1;
     [SerializeField] private bool isCircuit = false;
-    [SerializeField] private int totalLaps = 1;
+    [SerializeField] private int totalLaps = 10;
 
     private int currentLap = 1;
 
     private bool raceStarted = false;
     private bool raceFinished = false;
 
+    [Header("Lap Timer")]
     private float currentLapTime = 0f;
-    private float OverallRaceTime = 0f;
+    private float bestLapTime = Mathf.Infinity;
+    private float overallRaceTime = 0f;
+
 
     private void Awake()
     {
@@ -46,16 +50,31 @@ public class RaceManager : MonoBehaviour
         {
             UpdateTimers();
         }
+        UpdateUI();
     }
 
     private void OnLapFinish()
     {
         currentLap++;
+        
+        
+        if (currentLapTime < bestLapTime)
+        {
+            bestLapTime = currentLapTime;
+        }
+
 
         if (currentLap > totalLaps)
         {
-            EndRace();
+            //EndRace();
         }
+        else
+        {
+            currentLapTime = 0f;
+            lastCheckpointIndex = isCircuit ? 0 : -1;
+        }
+
+        
     }
 
     private void StartRace()
@@ -64,40 +83,47 @@ public class RaceManager : MonoBehaviour
         raceFinished = false;
     }
 
-    private void EndRace()
-    {
-        raceStarted = false;
-        raceFinished = true;
-    }
+    //private void EndRace()
+   // {
+        //raceStarted = false;
+        //raceFinished = true;
+    //}
 
     private void UpdateTimers()
     {
         currentLapTime += Time.deltaTime;
-        OverallRaceTime += Time.deltaTime;
+        overallRaceTime += Time.deltaTime;
     }
 
     private void UpdateUI()
     {
-        //currentLapTimeText.text = FormatTime(currentLapTime);
-        //overallRaceTimeText.text = FormatTime(currentLapTime);
+        currentLapTimeText.text = FormatTime(currentLapTime);
+        overallRaceTimeText.text = FormatTime(overallRaceTime);
+        //lapText.text = "Lap: " + currentLap + "/" + totalLaps;
+        bestLapTimeText.text = FormatTime(bestLapTime);
     }
 
-   /* private string FormatTime(float time)
+    private string FormatTime(float time)
     {
+        if (float.IsInfinity(time) || time < 0) return "--:--";
+        
+        
         int minutes = (int)time / 60;
-        float seconds = (time % 60;
-        return string.Format("{0;")
+        float seconds = time % 60;
+        return string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 
-    public void CheckpointReached(int checkpointIndex)
+    public void CheckpointReached(int CheckpointIndex)
     {
-        if ((!raceStarted && checkpointIndex != 0) || raceFinished) return;
-
-        if (checkpointIndex == lastCheckpointIndex + 1)
+        if ((!raceStarted && CheckpointIndex != 0) || raceFinished)
         {
-            //UpdateCheckpoint();
+            return;
         }
-     
+
+        if (CheckpointIndex == lastCheckpointIndex + 1 || lastCheckpointIndex == checkpoints.Length - 1)
+        {
+            UpdateCheckpoint(CheckpointIndex);
+        }
     }
 
     private void UpdateCheckpoint(int checkpointIndex)
@@ -121,5 +147,5 @@ public class RaceManager : MonoBehaviour
         lastCheckpointIndex = checkpointIndex;
     
     }
-   */
+   
 }

@@ -9,7 +9,7 @@ public class Checkpoint : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            //RaceManager.Instance.CheckpointReached(checkpointIndex);
+            RaceManager.Instance.CheckpointReached(checkpointIndex);
         }
     }
 }
