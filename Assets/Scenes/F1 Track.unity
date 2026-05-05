@@ -1377,6 +1377,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &1319321260 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 7861654886722739219, guid: f25f263509c717e47b7a4e001263f71d, type: 3}
+  m_PrefabInstance: {fileID: 1812620562}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1421557673
 GameObject:
   m_ObjectHideFlags: 0
@@ -1852,6 +1857,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7861654886722739219, guid: f25f263509c717e47b7a4e001263f71d, type: 3}
+      propertyPath: m_Mass
+      value: 1500
+      objectReference: {fileID: 0}
     - target: {fileID: 8665244049721071859, guid: f25f263509c717e47b7a4e001263f71d, type: 3}
       propertyPath: m_ForwardFriction.m_Stiffness
       value: 2
@@ -1876,6 +1885,10 @@ PrefabInstance:
       propertyPath: m_SidewaysFriction.m_ExtremumValue
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 8914824235132431662, guid: f25f263509c717e47b7a4e001263f71d, type: 3}
+      propertyPath: rigid
+      value: 
+      objectReference: {fileID: 1319321260}
     - target: {fileID: 8914824235132431662, guid: f25f263509c717e47b7a4e001263f71d, type: 3}
       propertyPath: drivespeed
       value: 2000
