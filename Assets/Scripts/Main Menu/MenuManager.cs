@@ -5,10 +5,14 @@ public class MenuManager : MonoBehaviour
 {
     [SerializeField] private GameObject _mainMenuCanvasGO;
     [SerializeField] private GameObject _settingsCanvasGO;
+    [SerializeField] private GameObject _controlCanvasGO;
+   
 
 
     [SerializeField] private GameObject _mainMenuFirst;
     [SerializeField] private GameObject _settingsMenuFirst;
+    [SerializeField] private GameObject _controlMenuFirst;
+   
    
     
     private bool ispaused;
@@ -17,6 +21,7 @@ public class MenuManager : MonoBehaviour
     {
         _mainMenuCanvasGO.SetActive(false);
         _settingsCanvasGO.SetActive(false);
+        _controlCanvasGO.SetActive(false);
     }
 
     private void Update()
@@ -57,6 +62,7 @@ public class MenuManager : MonoBehaviour
     {
         _mainMenuCanvasGO.SetActive(false);
         _settingsCanvasGO.SetActive(true);
+        _controlCanvasGO.SetActive(false);
 
         EventSystem.current.SetSelectedGameObject(_settingsMenuFirst);
     }
@@ -66,8 +72,18 @@ public class MenuManager : MonoBehaviour
     {
         _mainMenuCanvasGO.SetActive(true);
         _settingsCanvasGO.SetActive(false);
+        _controlCanvasGO.SetActive(false);
 
         EventSystem.current.SetSelectedGameObject(_mainMenuFirst);
+    }
+
+    private void OpenControlMenu()
+    {
+        _mainMenuCanvasGO.SetActive(false);
+        _settingsCanvasGO.SetActive(false);
+        _controlCanvasGO.SetActive(true);
+
+        EventSystem.current.SetSelectedGameObject(_controlMenuFirst);
     }
 
 
@@ -75,6 +91,8 @@ public class MenuManager : MonoBehaviour
     {
         _mainMenuCanvasGO.SetActive(false);
         _settingsCanvasGO.SetActive(false);
+        _controlCanvasGO.SetActive(false);
+        
 
         EventSystem.current.SetSelectedGameObject(null);
     }
@@ -96,7 +114,14 @@ public class MenuManager : MonoBehaviour
     }
 
 
+    public void OncontrolPress()
+    {
+        OpenControlMenu();
+    }
 
-
+    public void OnControlsBackPress()
+    {
+        OpenSettingsMenuHandle();
+    }
 
 }
