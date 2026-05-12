@@ -7,16 +7,6 @@ public class ButtonScripts : MonoBehaviour
 {
     public TMP_Text buttonText;
 
-   
-
-
-    void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            Debug.Log("Mouse Click Detected");
-        }
-    }
 
 
 
@@ -45,7 +35,7 @@ public class ButtonScripts : MonoBehaviour
     {
  
         SceneManager.LoadScene("Track");
-        Debug.Log("button pressed");
+       
 
     }
     
@@ -66,10 +56,7 @@ public class ButtonScripts : MonoBehaviour
     }
 
     
-        public void Test()
-        {
-            Debug.Log("BUTTON WORKS");
-        }
+       
 }
 
 
